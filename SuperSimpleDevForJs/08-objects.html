@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <script>
+        //Objects : An objects groups multiple values together. Just like dictionary from python. Objects makes our code organized. Like product name, price, quantity for all this variable creating different different variable is not good idea, it's better to create one object instead.
+
+        /*const product = {
+            name: 'socks',
+            price: 1090,
+        };
+        console.log(product, typeof product);
+        console.log(product.name);
+        console.log(product.price);
+        
+        //updatation on the value of object
+        product.name = 'cotton socks';
+        console.log(product);
+
+        //adding new value into object
+        product.newProperty = true;
+        console.log(product);
+
+        //deleting key: value from object
+        delete product.newProperty;
+        console.log(product);*/
+
+
+        const product2 = {
+            name: 'shirt',
+            ['delivery-time']: '1 Day',
+            rating: {
+                stars: 4.5,
+                count: 87,
+            },
+            fun: function fun1(){
+                console.log('This is the function inside object.')
+            }
+        };
+        console.log(product2);
+        console.log(product2.name);
+        console.log(product2['name']); //another way of accessing objects this bracket notation we use when we generally cann't use dot notation like we want to access something like delivery-time then in dot it will give an error bcoz the use of -.  And also in bracket we can use value calculation and also some variables.
+        
+        // console.log(product2.delivery-time);
+        console.log(product2['delivery-time']);
+
+        console.log(product2.rating);
+        console.log(product2.rating.count);
+
+        product2.fun();
+
+
+
+
+
+        /*console is one object. and console.log() this is function. Here when we store function inside object then it is known as method so here in above code fun1() is a method so log is also one method.*/
+        //console.log(typeof console);
+        //console.log(typeof console.log);
+        //Math.random() here object=Math , function=random() which is saved inside Math object and this complete Math.random() = method.
+
+        //Now we will see built in objects like console and Math there is JSON and localStorage named objects also present in js.
+        /*JSON : Java Script Object Notation. It is basically a syntax. Similar to Object but with less feature.
+        In JSON we have to write all the things in "" "key":"values" like this. Here '' is not allowed. and also function is also not allowed.
+        This JSON is accepted by all other lanuage that's why we are going to use JSON and also to store data we use JSON.
+        */
+
+    </script>
+</body>
+</html>
