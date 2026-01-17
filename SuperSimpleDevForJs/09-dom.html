@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM</title>
+</head>
+<body>
+  <button>hello</button>
+  <button class="js-button">Second button</button>
+  <script>
+    
+     //Methods of DOM:
+     //document.querySelector() : lets us get any element from the page and put inside javascript.
+     console.log(document.querySelector('button'));// string ni andar je element select karvu hoi anu name lakhvanu. so button lakhyu means it gives "first" button element of page.
+
+     //every html element has a property .innerHTML 
+     console.log(document.querySelector('button')
+        .innerHTML);//this will give the html element which are present inside  butoon element.
+
+     document.querySelector('button').innerHTML = 'changed';
+
+     //what if we have two button inside page. document.querySelector only selects first element to select second we need to add class on that second and then we can access.
+     const buttonElement = document.querySelector('.js-button');
+     console.log(buttonElement);
+     console.log(typeof buttonElement);
+     
+     
+
+
+
+
+
+
+     /*console.log(document.title);
+     document.title = 'changed';
+
+     console.log(document.body);
+     //document.body actually gives complete body element of html and puts inside the javascript.so by using this we can get html element inside js.
+     console.log(typeof document.body); //this body which is actually html  elment in real. bUt inside js it is object. and if it is an object then it definetly has property and methods to.
+
+     console.log(document.body.innerHTML)//this innerHTML  property of body object gives all html tag which is present inside body element.
+
+     //document.body.innerHTML = 'changed';
+     //this actually replace all html inside body with text 'changed'
+
+     //we can change html with using html like if want to make button then also we can do that.
+     document.body.innerHTML = '<button>Good job</button>'*/
+
+
+
+
+
+
+
+
+    /*document.body.innerHTML = 'hello';
+    //document is in built object of javascript. and inside we are using body which is property of document object. But body is also an object.so we are using dot notation again to access property of body which is innerHTML.
+
+    document.title = 'Good Job!';
+    //now this will change the title of web page.
+
+    //so basically document object represents or models the webpage. that's why we say it as DOM.
+
+    //this body and title are properties of the document object and it has method to which we will see later on.*/
+
+
+  </script>
+</body>
+</html>

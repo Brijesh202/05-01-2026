@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+</head>
+<body>
+  <p>Rock Paper Scissors</p>
+
+  <button onclick="
+      result('rock');"
+  >Rock</button>
+
+  <button onclick="
+      result('paper');
+  ">Paper</button>
+
+  <button onclick="
+      result('scissor');
+  ">Scissors</button>
+
+  <button onclick="
+      score.losses = 0;
+      score.ties = 0;
+      score.wins = 0;
+      //now when we do reset and then if we refresh the page the actually it doesn't reset the values. So to do so we need to do something like this.
+      localStorage.removeItem('score');//now after this when we play the game and reset and then refresh and again play game then it shows error. bcoz we removed score from localStorage so now when we load the page then score object doesn't exist. and when something doesn't exist in localStorage it gives null. and after that if we try to again play the game then we are accessing null so that's why it gives error.
+  ">Reset Score
+  </button>
+
+  <script>
+
+    //object
+    // const score = {
+    //   wins: 0,
+    //   losses: 0,
+    //   ties: 0
+    // }
+
+    //object but with localStorage thing
+    let score = JSON.parse(localStorage.getItem('score'));
+
+
+    //to solve the problem of null we can check if score is null and if it is null then we can assign default values like this.
+    if(!score){
+      score = {
+        wins: 0,
+        losses: 0,
+        ties: 0
+      }
+    }
+
+
+    //shortcut for above is like:
+    /*let score = JSON.parse(localStorage.getItem('score')) || {
+      wins: 0,
+      losses: 0,
+      ties: 0
+    }*/
+    
+
+    //Now to get string which is stored in localStorage we need to do getItem when we load the page very first time.
+    const item = localStorage.getItem('message'); //here we have to pass one string and that is the name the string which we passed when we called the setItem method. You can see that thing in below.
+    console.log(item);
+
+    console.log(JSON.parse(localStorage.getItem('score')));//now we need to convert back string into object for that we are using JSON.parse(). But you see here we doing console.log and actually we want to show the result in alert so for that we are using objects value so we need to change in score object so comment old score object and write with this localstorage thing.
+
+    function pickComputerMove(){
+      const randomNumber = Math.random();
+      let computerMove = '';
+
+      if(randomNumber >= 0 && randomNumber < 1/3){
+        computerMove = 'rock';
+      }
+      else if(randomNumber >= 1/3 && randomNumber < 2/3){
+        computerMove = 'paper';
+      }
+      else{
+        computerMove = 'scissor';
+      }
+
+      return computerMove;
+    }
+ 
+
+    function result(userMove){
+      const computerMove = pickComputerMove();
+      let result = '';
+      if(userMove === 'rock'){
+        if(computerMove === userMove){
+          result = 'Tie';
+        }
+        else if(computerMove === 'paper'){
+          result = 'You Lose!';
+        }
+        else if(computerMove === 'scissor'){
+          result = 'You Win!';
+        }
+      }
+      else if(userMove === 'paper'){
+        if(computerMove === userMove){
+          result = 'Tie';
+        }
+        else if(computerMove === 'rock'){
+          result = 'You Win';
+        }
+        else{
+          result = 'You Lose';
+        }
+      }
+      else{
+        if(computerMove === 'scissor'){
+          result = 'Tie';
+        }
+        else if(computerMove === 'rock'){
+          result = 'You Lose';
+        }
+        else{
+          result = 'You Win';
+        }
+      }
+
+
+      if(result === 'Tie'){
+        score.ties += 1;
+      }
+      else if(result === 'You Win'){
+        score.wins += 1;
+      }
+      else{ 
+        score.losses += 1;
+      }
+
+      localStorage.setItem('message','Hello'); //first string is name and second is the value which we want to save inside the localStorage.
+
+      localStorage.setItem('score',JSON.stringify(score));//Name we have given 'score' that is fine but in second thing we are passing object score and problem is that we can only pass string so we need to convert into string for that we are using JSON.stringify.
+
+
+      alert(`You chose ${userMove}. Computer picked ${computerMove}. ${result}. \nTies: ${score.ties}, Wins: ${score.wins}, Lose: ${score.losses}`)
+    }
+  </script>
+</body>
+</html>
