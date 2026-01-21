@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <script>
+        //Objects : An objects groups multiple values together. Just like dictionary from python. Objects makes our code organized. Like product name, price, quantity for all this variable creating different different variable is not good idea, it's better to create one object instead.
+
+        /*const product = {
+            name: 'socks',
+            price: 1090,
+        };
+        console.log(product, typeof product);
+        console.log(product.name);
+        console.log(product.price);
+        
+        //updatation on the value of object
+        product.name = 'cotton socks';
+        console.log(product);
+
+        //adding new value into object
+        product.newProperty = true;
+        console.log(product);
+
+        //deleting key: value from object
+        delete product.newProperty;
+        console.log(product);*/
+
+
+        const product2 = {
+            name: 'shirt',
+            ['delivery-time']: '1 Day',
+            rating: {
+                stars: 4.5,
+                count: 87,
+            },
+            fun: function fun1(){
+                console.log('This is the function inside object.')
+            }
+        };
+        console.log(product2);
+        console.log(product2.name);
+        console.log(product2['name']); //another way of accessing objects this bracket notation we use when we generally cann't use dot notation like we want to access something like delivery-time then in dot it will give an error bcoz the use of -.  And also in bracket we can use value calculation and also some variables.
+        
+        // console.log(product2.delivery-time);
+        console.log(product2['delivery-time']);
+
+        console.log(product2.rating);
+        console.log(product2.rating.count);
+
+        product2.fun();
+
+
+
+
+
+        /*console is one object. and console.log() this is function. Here when we store function inside object then it is known as method so here in above code fun1() is a method so log is also one method.*/
+        //console.log(typeof console);
+        //console.log(typeof console.log);
+        //Math.random() here object=Math , function=random() which is saved inside Math object and this complete Math.random() = method.
+
+        //Now we will see built in objects like console and Math there is JSON and localStorage named objects also present in js.
+        /*JSON : Java Script Object Notation. It is basically a syntax. Similar to Object but with less feature.
+        In JSON we have to write all the things in "" "key":"values" like this. Here '' is not allowed. and also function is also not allowed.
+        This JSON is accepted by all other lanuage that's why we are going to use JSON and also to store data we use JSON.
+        */
+       //also json object also helps us to convert javascript object into JSON.
+
+       console.log(JSON.stringify(product2)); //result of this is actually a string.
+
+       //Now if you want to convert JSON to javascript object then you can do JSON.parse()
+       console.log(JSON.parse(JSON.stringify(product2)));
+
+       //localstorage : used to save values more permanently. wehreas variables only save values temporary if we refresh or close the page all the variables are deleted.
+
+
+
+
+
+
+        //Auto-boxing : in this feature js automatically sets string into box "object" and after that we can apply property into that object. But auto boxing will not going to work with null and undefined.
+        console.log('hello'.length);//jem object ne properties nd methods hoi chhe tem other things also are there ke jemne bi properties hoi chhe like string ni one of the property is length.
+
+        console.log('hello'.toUpperCase());//it gives copy of string in upperCase.
+
+        //objects are reference:
+        const object1 = {
+            message: 'hello',
+        };
+        const object2 = object1;
+        //In really object1 is stored somewhere else and message:hello is stored somewhere else so object1 is just get the refrence of that thing. in second line object2 will not create different copy of that but it just only get the reference. inshort it is something like two pointer pointing to same variable.
+
+        object1.message = 'Good Job';
+        console.log(object1); //although object1 is const we are able to change message to Good Job bcoz of reference thing.
+
+        /*object1 = {
+            'name' : 'mohan',
+        }
+        console.log(object1); if we do this then it will give an error bcoz we are changing the object1 which is const.*/
+
+        console.log(object2);
+
+        //we cann't compare object directly.
+        const object3 = {
+            message: 'Good Job',
+        }
+        console.log(object1 === object3);//bcoz this objects are refrence to message:'Good Job'.
+        console.log(object1 === object2);//now this will give us true bcoz both object are pointing to same thing so refrence are same. we are checking the refrence not the value inside object
+
+        const object4 = {
+            message: 'Good Job',
+            price: 799,
+            name: 'rocky'
+        }
+        const message = object4.message;//we are accessing the value and storing into same name variable
+        //so in this type of case we can use shortcut like this.
+        //const {message} = object4;//this is called destructuring.
+        console.log(message)
+
+        const {price, name} = object4;
+        console.log(price,name);
+
+
+        //shorthand property and shorthand method:
+        object5 = {
+            //message: message //je : pachhi message chhe a je upper const message name no variable chhe temathi aave chhe. so aane mate shorthand chhe like this.
+            message,
+
+            
+            //method: function function1(){
+            //    console.log('method');
+            //}
+            //shortcut for this:
+            method(){
+                console.log('method');
+            }
+        };
+        console.log(message);
+        object5.method();
+
+
+        //shorthand method:
+        
+
+    </script>
+</body>
+</html>

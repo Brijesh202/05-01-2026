@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Functions</title>
+</head>
+<body>
+  <button onclick="" class="js-button">Click</button>
+
+
+  <script>
+    const buttonElement = document.querySelector('.js-button');
+
+    //every html element has a method .addEventListner() and it does short off same thing as onClick.
+    
+
+    //using addEventListener we can add multiple event and also we can remove event.
+
+
+    const eventListener = () => {
+      console.log('click');
+    }
+
+    buttonElement.addEventListener('click',eventListener);
+
+    buttonElement.removeEventListener('click',eventListener);//remove karva mate second parameter ma function je remove karvu chhe te nakhvanu so ana mate better a chhe k we save function into variable and then use.
+
+    buttonElement.addEventListener('click', () => {
+      console.log('click2');
+    });
+    //so from above code if you see the output then it only prints click2 bcoz we removed that above one event.
+    
+  </script>
+</body>
+</html>
