@@ -46,7 +46,8 @@ products.forEach((product) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add-to-cart"
+          data-product-id = "${product.id}">
             Add to Cart
           </button>
     </div>
@@ -58,3 +59,35 @@ products.forEach((product) => {
 console.log(productsHTML);
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
+
+document.querySelectorAll('.js-add-to-cart').forEach((button) => {
+  button.addEventListener('click', () => {
+    console.log('product added');
+    console.log(button.dataset.productId);//aapde je button ni andar ek feature add karyu chhe data attribute ke jema badho j data hase ke kai item chhe name and all and 
+    // aapde .dataset.productName no use karine productName get kari laisu and aa je .productName chhe a property chhe dataset ni.
+    const productId = button.dataset.productId
+
+    let matchingItem;
+
+    cart.forEach((item) => {
+      if(productId === item.productId){
+        matchingItem = item;
+      }
+    });
+
+    if(matchingItem){
+      matchingItem.quantity += 1;
+    }
+    else{
+      cart.push({
+      productId: productId,
+      quantity: 1
+      });
+    }
+
+
+    console.log(cart);
+  });
+})
+
+//it is not good to use productName bcoz there can be 2 differents item possible with same name from different brands so instead use ID.
